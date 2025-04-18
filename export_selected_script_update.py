@@ -2,6 +2,20 @@ import comtypes.client
 import csv
 from tabulate import tabulate
 
+
+
+
+def sigma(P=100E3, M22=50E3, M33=50E3, b=0.5, h=1.2):
+
+    P = abs(P)
+    M22 = abs(M22)
+    M33 = abs(M33)
+    W22 = h*b**2/6
+    W33 = b*h**2/6
+    A = h * b
+    return (P/A + M22/W22 + M33/W33)*1E-6
+
+
 # Connect to ETABS API
 ETABSObject = comtypes.client.GetActiveObject("CSI.ETABS.API.ETABSObject")
 SapModel = ETABSObject.SapModel
@@ -22,23 +36,30 @@ _, combinations, _, = SapModel.RespCombo.GetNameList()
 
 filtered_combinations = []
 
-for name in combinations:
-    number = None
-    try:
-        number = int(name.split(':')[0])
-        #print(number)
-        if number < 6033:
-            print(name)
-            filtered_combinations.append(name)
-    except:
-        pass
-
+# for name in combinations:
+#     number = None
+#     try:
+#         number = int(name.split(':')[0])
+#         #print(number)
+#         if number < 6033:
+#             print(name)
+#             filtered_combinations.append(name)
+#     except:
+#         pass
+#
 SapModel.Results.Setup.DeselectAllCasesAndCombosForOutput()
-for each in list(filtered_combinations):
-    SapModel.Results.Setup.SetComboSelectedForOutput(each)
+# for each in list(filtered_combinations):
+#     SapModel.Results.Setup.SetComboSelectedForOutput(each)
 
-#SapModel.Results.Setup.SetComboSelectedForOutput("EQ_Y_rsa_mod_39")
-#SapModel.Results.Setup.SetComboSelectedForOutput("5083: +1.50(11. DL-FLOOR_EQP_PIP)+1.00(66.[TL-])+0.45(91.EQD_Z(VER))-1.50(92.EQD_X_E+(HOR))")
+SapModel.Results.Setup.SetComboSelectedForOutput("EQD_X_E+(HOR)")
+SapModel.Results.Setup.SetComboSelectedForOutput("EQD_Y_E+(HOR)")
+
+#SapModel.Results.Setup.SetComboSelectedForOutput("[TL+]")
+
+
+
+#SapModel.Results.Setup.SetComboSelectedForOutput("1012:1.00(11. DL-FLOOR_EQP_PIP)+1.00(65.[TL+])+1.00(52.WL(-X))+1.00(58.WL(CPI-,-X))")
+
 
 #--------------------------------------------------
 
@@ -46,7 +67,9 @@ for each in list(filtered_combinations):
 #number_selected, object_types, object_names, _  = SapModel.SelectObj.GetSelected()
 
 # Get selected frame elements
-group_name = 'L30_W6'
+group_name = 'L30_C6'
+b = 0.6
+h = 1.0
 number_selected, object_types, object_names, _  = SapModel.GroupDef.GetAssignments(group_name)
 
 selected_frames = []
@@ -63,6 +86,9 @@ for i in range(number_selected):
 
 P_max = 0
 P_max_record = None
+
+P_maxabs = 0
+P_maxabs_record = None
 
 P_min = 0
 P_min_record = None
@@ -85,6 +111,18 @@ M3_max_record = None
 M3_min = 0
 M3_min_record = None
 
+Mtot_maxabs = 0
+Mtot_maxabs_record = None
+
+Vtot_maxabs = 0
+Vtot_maxabs_record = None
+
+NMsignatot_maxabs = 0
+NMsignatot_maxabs_record = None
+
+
+
+
 
 frame_results = []
 total = len(selected_frames)
@@ -103,6 +141,10 @@ for frame in selected_frames:
         t = T[i]
         m2 = M2[i]
         m3 = M3[i]
+        mtot = (m2**2 + m3**2)**0.5
+        vtot = (v2**2 + v3**2)**0.5
+        nmsignatot = sigma(p*1E3, 0, m3*1E3, b, h)
+        #print(nmsignatot)
         #frame_results.append([frame, LoadCase[i], StepType[i], ElmSta[i], P[i], V2[i], V3[i], T[i], M2[i], M3[i]])
         this_record = ([frame, LoadCase[i], StepType[i], ElmSta[i], P[i], V2[i], V3[i], T[i], M2[i], M3[i]])
 
@@ -112,6 +154,12 @@ for frame in selected_frames:
         if p < P_min:
             P_min = p
             P_min_record = [f'P_min={round(p,2)}'] + this_record
+
+
+        if abs(p) > abs(P_maxabs):
+            P_maxabs = abs(p)
+            P_maxabs_record = [f'P_maxabs={round(p,2)}'] + this_record
+
 
         if abs(v2) > abs(V2_maxabs):
             V2_maxabs = abs(v2)
@@ -141,25 +189,57 @@ for frame in selected_frames:
             M3_min_record = [f'M3_min={round(m3,2)}'] + this_record
 
 
+
+        if abs(mtot) >abs(Mtot_maxabs):
+            Mtot_maxabs = abs(mtot)
+            Mtot_maxabs_record = [f'M_tot={round(mtot,2)}'] + this_record
+
+
+
+        if abs(vtot) >abs(Vtot_maxabs):
+            Vtot_maxabs = abs(vtot)
+            Vtot_maxabs_record = [f'V_tot={round(vtot,2)}'] + this_record
+
+        if abs(nmsignatot) >abs(NMsignatot_maxabs):
+            NMsignatot_maxabs = abs(nmsignatot)
+            NMsignatot_maxabs_record = [f'P-M sigma_maxabs={round(nmsignatot,2)}[MPa]'] + this_record
+            #print (NMsignatot_maxabs_record)
+
+
+
 #--------------------------------------------------
 
 
 out = []
-if P_max_record: out.append(P_max_record)
-if P_min_record: out.append(P_min_record)
-if V2_maxabs_record: out.append(V2_maxabs_record)
-if V3_maxabs_record: out.append(V3_maxabs_record)
-if T_maxabs_record: out.append(T_maxabs_record)
-if M2_maxabs_record: out.append(M2_maxabs_record)
-if M3_max_record: out.append(M3_max_record)
-if M3_min_record: out.append(M3_min_record)
+#if P_max_record: out.append(P_max_record)
+#if P_min_record: out.append(P_min_record)
+
+if P_maxabs_record: out.append(P_maxabs_record)
+
+#if V2_maxabs_record: out.append(V2_maxabs_record)
+#if V3_maxabs_record: out.append(V3_maxabs_record)
+
+#if T_maxabs_record: out.append(T_maxabs_record)
+
+#if M2_maxabs_record: out.append(M2_maxabs_record)
+#if M3_max_record: out.append(M3_max_record)
+#if M3_min_record: out.append(M3_min_record)
+
+if Mtot_maxabs_record: out.append(Mtot_maxabs_record)
+
+if NMsignatot_maxabs_record: out.append(NMsignatot_maxabs_record)
+
+if Vtot_maxabs_record: out.append(Vtot_maxabs_record)
 
 
 
-col_name = ['Case' ,"Frame", "LC", "StepType", "ElmSta", "P", "V2", "V3", "T", "M2", "M3"]
+
+
+
+col_name = ['Case' ,"Frame", "LC", "StepType", "ElmSta", "P[kN]", "V2[kN]", "V3[kN]", "T[kNm]", "M2[kNm]", "M3[kNm]"]
 print('\n\n')
 try:
-    print(f'Beam group {group_name}')
+    print(f'Beam group {group_name} (b={b} x h={h} [m])')
 except:
     pass
 print(tabulate(out, headers=col_name, tablefmt='psql', floatfmt=".2f"))
