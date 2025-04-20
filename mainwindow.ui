@@ -6,113 +6,296 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1007</width>
-    <height>644</height>
+    <width>1407</width>
+    <height>761</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Etabs plus toolkit</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QListWidget" name="listWidget">
+   <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>180</y>
-      <width>421</width>
-      <height>192</height>
+      <x>20</x>
+      <y>20</y>
+      <width>1371</width>
+      <height>701</height>
      </rect>
     </property>
-    <property name="selectionMode">
-     <enum>QAbstractItemView::ExtendedSelection</enum>
+    <property name="currentIndex">
+     <number>1</number>
     </property>
-    <item>
-     <property name="text">
-      <string>weqe</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Nowy element</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Nowy element</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Nowy element</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Nowy element</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Nowy element</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Nowy element</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>10</y>
-      <width>191</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Get model data</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>140</y>
-      <width>221</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Load combinations</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>120</y>
-      <width>91</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Groups</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>400</y>
-      <width>221</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Load cases:</string>
-    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Beams query setting</string>
+     </attribute>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>60</y>
+        <width>201</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Load combinations:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_GetEtabsData">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>191</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Get model data</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="listWidget_LC">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>90</y>
+        <width>471</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::ExtendedSelection</enum>
+      </property>
+      <item>
+       <property name="text">
+        <string>weqe</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Nowy element</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Nowy element</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Nowy element</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Nowy element</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Nowy element</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Nowy element</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QListWidget" name="listWidget_Groups">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>90</y>
+        <width>511</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::ExtendedSelection</enum>
+      </property>
+      <item>
+       <property name="text">
+        <string>weqe</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Nowy element</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Nowy element</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Nowy element</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Nowy element</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Nowy element</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Nowy element</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QRadioButton" name="radioButton_SelectedGroup">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>60</y>
+        <width>141</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Selected Group</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radioButton_SelecteInEtabs">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>280</y>
+        <width>141</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Selected in Etabs</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Output</string>
+     </attribute>
+     <widget class="QPushButton" name="pushButton_GetResults">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>101</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Get results</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_ClearResults">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>50</y>
+        <width>101</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Clear</string>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="progressBar">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>20</y>
+        <width>201</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>24</number>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_Pmax">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>20</y>
+        <width>107</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>P max</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_Pmin">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>20</y>
+        <width>107</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>P min</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="plainTextEdit">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>100</y>
+        <width>1311</width>
+        <height>551</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_EndsOnly">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>60</y>
+        <width>107</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ends only</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>App info</string>
+     </attribute>
+     <widget class="QPlainTextEdit" name="plainTextEdit_AppInfo">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>1311</width>
+        <height>125</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+      <property name="plainText">
+       <string>sdasadadasd</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -120,7 +303,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1007</width>
+     <width>1407</width>
      <height>26</height>
     </rect>
    </property>
