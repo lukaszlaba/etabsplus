@@ -1,0 +1,4 @@
+*.pyc
+.cache
+dist
+loge.egg-info

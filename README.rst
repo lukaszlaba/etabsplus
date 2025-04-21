@@ -3,7 +3,7 @@ Etabsplus - Etabs member result extract tool
 
 `Download binaries for Windows <https://github.com/lukaszlaba/etabsplus/releases>`_
 
-.. image:: interface.png
+.. image:: docs/interface.png
 
 Changelog
 ---------
