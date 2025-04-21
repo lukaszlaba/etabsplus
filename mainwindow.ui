@@ -24,7 +24,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -106,13 +106,6 @@
         <string>Output</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="1" column="0">
-         <widget class="QPushButton" name="pushButton_ClearResults">
-          <property name="text">
-           <string>Clear</string>
-          </property>
-         </widget>
-        </item>
         <item row="1" column="8">
          <widget class="QCheckBox" name="checkBox_PM3_abs">
           <property name="text">
@@ -131,13 +124,6 @@
          <widget class="QCheckBox" name="checkBox_Vtot_abs">
           <property name="text">
            <string>Vtot_abs</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QPushButton" name="pushButton_GetResults">
-          <property name="text">
-           <string>Get results</string>
           </property>
          </widget>
         </item>
@@ -224,6 +210,13 @@
           </property>
          </widget>
         </item>
+        <item row="1" column="13">
+         <widget class="QCheckBox" name="checkBox_PM_abs_2">
+          <property name="text">
+           <string>reduce LC name</string>
+          </property>
+         </widget>
+        </item>
         <item row="1" column="1">
          <widget class="QProgressBar" name="progressBar_2">
           <property name="enabled">
@@ -244,6 +237,26 @@
          <widget class="QCheckBox" name="checkBox_PV2_abs">
           <property name="text">
            <string>PV2_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" rowspan="3">
+         <widget class="QPushButton" name="pushButton_GetResults">
+          <property name="text">
+           <string>Get results</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QPushButton" name="pushButton_zoomIn">
+          <property name="maximumSize">
+           <size>
+            <width>75</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>+</string>
           </property>
          </widget>
         </item>
@@ -281,6 +294,19 @@
           </property>
          </widget>
         </item>
+        <item row="3" column="0" colspan="20">
+         <widget class="QPlainTextEdit" name="plainTextEdit">
+          <property name="font">
+           <font>
+            <family>Courier New</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
         <item row="0" column="3">
          <widget class="QCheckBox" name="checkBox_P_max">
           <property name="text">
@@ -295,16 +321,16 @@
           </property>
          </widget>
         </item>
-        <item row="3" column="0" colspan="20">
-         <widget class="QPlainTextEdit" name="plainTextEdit">
-          <property name="font">
-           <font>
-            <family>Courier New</family>
-            <pointsize>10</pointsize>
-           </font>
+        <item row="4" column="1">
+         <widget class="QPushButton" name="pushButton_zoomOut">
+          <property name="maximumSize">
+           <size>
+            <width>75</width>
+            <height>16777215</height>
+           </size>
           </property>
-          <property name="readOnly">
-           <bool>true</bool>
+          <property name="text">
+           <string>-</string>
           </property>
          </widget>
         </item>

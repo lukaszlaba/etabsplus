@@ -13,8 +13,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
 
         self.pushButton_GetEtabsData.clicked.connect(connect_etabs)
-        self.pushButton_ClearResults.clicked.connect(self.plainTextEdit.clear)
         self.pushButton_GetResults.clicked.connect(show_results)
+
+        self.pushButton_zoomIn.clicked.connect(self.plainTextEdit.zoomIn)
+        self.pushButton_zoomOut.clicked.connect(self.plainTextEdit.zoomOut)
 
         self.radioButton_SelectedGroup.clicked.connect(lambda: ui.listWidget_Groups.setEnabled(True))
         self.radioButton_SelectedGroup.clicked.connect(lambda: ui.listWidget_Section.setEnabled(False))
