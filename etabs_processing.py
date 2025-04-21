@@ -51,10 +51,14 @@ def get_lcs_list() -> list[str]:
 def get_groups_list() -> list[str]:
     groups = SapModel.GroupDef.GetNameList()[1]
     if groups[0] == 'All': groups = groups[1:]
+    groups = list(groups)
+    groups.sort()
     return groups
 
 def get_frame_props_list() -> list[str]:
     frame_props = SapModel.PropFrame.GetAllFrameProperties()[1]
+    frame_props = list(frame_props)
+    frame_props.sort()
     return frame_props
 
 def get_frame_list_for_group(group_name: str) -> list[str]:
@@ -64,6 +68,16 @@ def get_frame_list_for_group(group_name: str) -> list[str]:
         if object_types[i] == 2:
             selected_frames.append(object_names[i])
     return selected_frames
+
+def get_frame_list_for_prop(prop_name: str) -> list[str]:
+    frames = []
+    frame_data = ETABSObject.SapModel.FrameObj.GetAllFrames()
+    frame_numbers = frame_data[1]
+    frame_sections = frame_data[2]
+    for f, s in zip(frame_numbers, frame_sections):
+        if s == prop_name:
+            frames.append(f)
+    return frames
 
 def get_frame_list_current_selected():
     number_selected, object_types, object_names, _  = SapModel.SelectObj.GetSelected()
@@ -233,10 +247,10 @@ def get_report(framelist, lc_list, progress=None):
                 NMsignatot_maxabs = abs(nmsignatot)
                 NMsignatot_maxabs_record = [f'P-M sigma_maxabs={round(abs(nmsignatot),2)}[MPa]'] + this_record
             #--------------progress ----
-        if progress: progress.set_progress(int(n/total*100))
+        if progress: progress.set_progress_1(int(n/total*100))
         else: print(f'{n} of {total}')
         n += 1
-    if progress: progress.set_progress()
+    if progress: progress.set_progress_1()
     #------------making output table
 
     out = []
@@ -267,6 +281,13 @@ def get_report(framelist, lc_list, progress=None):
 
     if Vtot_maxabs_record: out.append(Vtot_maxabs_record)
 
+
+    # LC name reduce
+    if True:
+        for row in out:
+            if len(row[2])>20:
+                row[2] = row[2][:20]+'..'
+
     col_name = ['Case' ,"Frame", "LC", "StepType", "ObjSta", "P[kN]", "V2[kN]", "V3[kN]", "T[kNm]", "M2[kNm]", "M3[kNm]"]
     print('\n\n')
 
@@ -283,16 +304,17 @@ def get_report(framelist, lc_list, progress=None):
 
 
 if __name__ == '__main__':
-    # connect()
-    # print(get_model_filename())
-    # print(get_lcs_list())
-    # print(get_groups_list())
-    # print(get_frame_props_list())
-    # print(get_frame_list_for_group('L30_W1'))
-    # get_frame_list_current_selected()
-    #
-    # test_frame_list = get_frame_list_for_group('L30_W1')
-    # test_lc_list = get_lcs_list()[:5]
-    # print(get_report(test_frame_list, test_lc_list))
+    connect()
+    print(get_model_filename())
+    print(get_lcs_list())
+    print(get_groups_list())
+    print(get_frame_props_list())
+    print(get_frame_list_for_group('L30_W1'))
+    print(get_frame_list_for_prop('FW600X500X32X56'))
+    print(get_frame_list_current_selected())
+
+    test_frame_list = get_frame_list_for_group('L30_W1')
+    test_lc_list = get_lcs_list()[:5]
+    print(get_report(test_frame_list, test_lc_list))
     pass
 

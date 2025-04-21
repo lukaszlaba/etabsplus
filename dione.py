@@ -37,9 +37,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def selected_Groups(self) -> list[str]:
         return [i.text() for i in self.listWidget_Groups.selectedItems()]
 
+    def selected_Sections(self) -> list[str]:
+        return [i.text() for i in ui.listWidget_Section.selectedItems()]
+
     def set_list_of_LCs(self, lc_list: list[str]):
         self.listWidget_LC.clear()
         self.listWidget_LC.addItems(lc_list)
+
+    def set_list_of_Sections(self, section_list: list[str]):
+        self.listWidget_Section.clear()
+        self.listWidget_Section.addItems(section_list)
 
     def set_list_of_Groups(self, groups_list: list[str]):
         self.listWidget_Groups.clear()
@@ -47,17 +54,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def set_progress_1(self, value: int=0):
         self.progressBar_1.setValue(value)
-        if value == 0:
-            self.progressBar_1.setDisabled(True)
-        else:
-            self.progressBar_1.setDisabled(False)
 
     def set_progress_2(self, value: int=0):
         self.progressBar_2.setValue(value)
-        if value == 0:
-            self.progressBar_2.setDisabled(True)
-        else:
-            self.progressBar_2.setDisabled(False)
 
     def set_title(self, text: str=''):
         if text:
@@ -91,30 +90,54 @@ def set_options():
     options.sigma_PN_abs = ui.checkBox_PM_abs.isChecked()
     options.ends_only = ui.checkBox_ends_only.isChecked()
 
+
 def show_results():
+    ui.plainTextEdit.setPlainText('Processing....')
+    #--
     set_options()
+    #--
     group_list = ui.selected_Groups()
+    section_list = ui.selected_Sections()
     lc_list = ui.selected_LCs()
+    #--
     report = ''
-    for group in group_list:
-        frame_list = etabs_processing.get_frame_list_for_group(group)
-        report += f'{group}\n'
-        report += etabs_processing.get_report(frame_list, lc_list,  progress = ui)
-
-
+    #--
+    if ui.radioButton_SelectedGroup.isChecked():
+        i = 0
+        for group in group_list:
+            frame_list = etabs_processing.get_frame_list_for_group(group)
+            report += f'{group}\n'
+            report += etabs_processing.get_report(frame_list, lc_list,  progress = ui)
+            report += '\n'
+            i += 1
+            ui.set_progress_2(int(i/len(group_list)*100))
+        ui.set_progress_2()
+    if ui.radioButton_SelectedSection.isChecked():
+        i = 0
+        for section in section_list:
+            frame_list = etabs_processing.get_frame_list_for_prop(section)
+            report += f'{section}\n'
+            report += etabs_processing.get_report(frame_list, lc_list,  progress = ui)
+            report += '\n'
+            i += 1
+            ui.set_progress_2(int(i/len(section_list)*100))
+        ui.set_progress_2()
+    if ui.radioButton_SelecteInEtabs.isChecked():
+            frame_list = etabs_processing.get_frame_list_current_selected()
+            report += f'Selected {len(frame_list)} frames\n'
+            report += etabs_processing.get_report(frame_list, lc_list,  progress = ui)
+            report += '\n'
     ui.plainTextEdit.setPlainText(report)
-
 
 def connect_etabs():
     etabs_processing.connect()
     ui.set_list_of_LCs(etabs_processing.get_lcs_list())
+    ui.set_list_of_Sections(etabs_processing.get_frame_props_list())
     ui.set_list_of_Groups(etabs_processing.get_groups_list())
     ui.set_title(etabs_processing.get_model_filename())
-
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     ui = MainWindow()
     ui.show()
-
     sys.exit(app.exec())
