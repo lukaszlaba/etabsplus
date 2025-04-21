@@ -10,22 +10,24 @@ eUnit_dict = {'kip_ft_F': 4 ,'KN_m_C': 6, }
 
 class Analysis_Options:
     P_max = True
-    P_maxabs = True
     P_min = True
-    V2_maxabs = True
-    V3_maxabs = True
-    T_maxabs = True
-    M2_maxabs = True
-    M3_maxabs = True
-    M3_max = True
+    P_abs = True
+    V2_abs = True
+    V3_abs = True
+    T_abs = True
+    M2_abs = True
     M3_min = True
-    Mtot_maxabs = True
-    Vtot_maxabs = True
-    NM3signatot_maxabs = True
-    NM2signatot_maxabs = True
-    NMsignatot_maxabs = True
-    ends_only = False
-
+    M3_max = True
+    M3_abs = True
+    Mtot_abs = True
+    Vtot_abs = True
+    PV2_abs = True
+    PV3_abs = True
+    PV_abs = True
+    sigma_PM3_abs = True
+    sigma_PM3_abs = True
+    sigma_PM_abs = True
+    ends_only = True
 
 def connect():
     global ETABSObject, SapModel
@@ -281,15 +283,16 @@ def get_report(framelist, lc_list, progress=None):
 
 
 if __name__ == '__main__':
-    connect()
-    print(get_model_filename())
-    print(get_lcs_list())
-    print(get_groups_list())
-    print(get_frame_props_list())
-    print(get_frame_list_for_group('L30_W1'))
-    get_frame_list_current_selected()
-
-    test_frame_list = get_frame_list_for_group('L30_W1')
-    test_lc_list = get_lcs_list()[:5]
-    print(get_report(test_frame_list, test_lc_list))
+    # connect()
+    # print(get_model_filename())
+    # print(get_lcs_list())
+    # print(get_groups_list())
+    # print(get_frame_props_list())
+    # print(get_frame_list_for_group('L30_W1'))
+    # get_frame_list_current_selected()
+    #
+    # test_frame_list = get_frame_list_for_group('L30_W1')
+    # test_lc_list = get_lcs_list()[:5]
+    # print(get_report(test_frame_list, test_lc_list))
+    pass
 

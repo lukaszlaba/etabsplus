@@ -6,304 +6,368 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1407</width>
-    <height>761</height>
+    <width>1471</width>
+    <height>794</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Etabs plus toolkit</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>1371</width>
-      <height>701</height>
-     </rect>
-    </property>
-    <property name="currentIndex">
-     <number>1</number>
-    </property>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>Beams query setting</string>
-     </attribute>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>60</y>
-        <width>201</width>
-        <height>20</height>
-       </rect>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
       </property>
-      <property name="text">
-       <string>Load combinations:</string>
+      <property name="currentIndex">
+       <number>0</number>
       </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Beams query setting</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="2" column="0">
+         <widget class="QListWidget" name="listWidget_LC">
+          <property name="selectionMode">
+           <enum>QAbstractItemView::ExtendedSelection</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QListWidget" name="listWidget_Section">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::ExtendedSelection</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QListWidget" name="listWidget_Groups">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::ExtendedSelection</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QRadioButton" name="radioButton_SelecteInEtabs">
+          <property name="text">
+           <string>Members Currently Selected in Etabs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" colspan="3">
+         <widget class="QPushButton" name="pushButton_GetEtabsData">
+          <property name="text">
+           <string>Get model data</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QRadioButton" name="radioButton_SelectedGroup">
+          <property name="text">
+           <string>Selected Group</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Load combinations:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QRadioButton" name="radioButton_SelectedSection">
+          <property name="text">
+           <string>Selected Section</string>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Output</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="1" column="0">
+         <widget class="QPushButton" name="pushButton_ClearResults">
+          <property name="text">
+           <string>Clear</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="8">
+         <widget class="QCheckBox" name="checkBox_PM3_abs">
+          <property name="text">
+           <string>σ_PM3_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="9">
+         <widget class="QCheckBox" name="checkBox_PM2_abs">
+          <property name="text">
+           <string>σ_PM2_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QCheckBox" name="checkBox_Vtot_abs">
+          <property name="text">
+           <string>Vtot_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pushButton_GetResults">
+          <property name="text">
+           <string>Get results</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="12">
+         <widget class="QCheckBox" name="checkBox_M3_abs">
+          <property name="text">
+           <string>M3_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="6">
+         <widget class="QCheckBox" name="checkBox_PV3_abs">
+          <property name="text">
+           <string>PV3_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="6">
+         <widget class="QCheckBox" name="checkBox_V2_abs">
+          <property name="text">
+           <string>V2_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="9">
+         <widget class="QCheckBox" name="checkBox_M2_abs">
+          <property name="text">
+           <string>M2_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="5">
+         <widget class="QCheckBox" name="checkBox_P_abs">
+          <property name="text">
+           <string>P_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="8">
+         <widget class="QCheckBox" name="checkBox_T_abs">
+          <property name="text">
+           <string>T_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="10">
+         <widget class="QCheckBox" name="checkBox_M3_max">
+          <property name="text">
+           <string>M3_max</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="11">
+         <widget class="QCheckBox" name="checkBox_M3_min">
+          <property name="text">
+           <string>M3_min</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="4">
+         <widget class="QCheckBox" name="checkBox_P_min">
+          <property name="text">
+           <string>P_min</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="18">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="10">
+         <widget class="QCheckBox" name="checkBox_PM_abs">
+          <property name="text">
+           <string>σ_PM_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QProgressBar" name="progressBar_2">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="5">
+         <widget class="QCheckBox" name="checkBox_PV2_abs">
+          <property name="text">
+           <string>PV2_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QProgressBar" name="progressBar_1">
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="7">
+         <widget class="QCheckBox" name="checkBox_PV_abs">
+          <property name="text">
+           <string>PV_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="7">
+         <widget class="QCheckBox" name="checkBox_V3_abs">
+          <property name="text">
+           <string>V3_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="11" colspan="2">
+         <widget class="QCheckBox" name="checkBox_ends_only">
+          <property name="text">
+           <string>ends_only (forces for connections)</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QCheckBox" name="checkBox_P_max">
+          <property name="text">
+           <string>P_max</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="4">
+         <widget class="QCheckBox" name="checkBox_Mtot_abs">
+          <property name="text">
+           <string>Mtot_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0" colspan="20">
+         <widget class="QPlainTextEdit" name="plainTextEdit">
+          <property name="font">
+           <font>
+            <family>Courier New</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>App info</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QPlainTextEdit" name="plainTextEdit_AppInfo">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>500</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Courier New</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="plainText">
+           <string/>
+          </property>
+          <property name="backgroundVisible">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
      </widget>
-     <widget class="QPushButton" name="pushButton_GetEtabsData">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>20</y>
-        <width>191</width>
-        <height>29</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Get model data</string>
-      </property>
-     </widget>
-     <widget class="QListWidget" name="listWidget_LC">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>90</y>
-        <width>471</width>
-        <height>181</height>
-       </rect>
-      </property>
-      <property name="selectionMode">
-       <enum>QAbstractItemView::ExtendedSelection</enum>
-      </property>
-      <item>
-       <property name="text">
-        <string>weqe</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nowy element</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nowy element</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nowy element</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nowy element</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nowy element</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nowy element</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QListWidget" name="listWidget_Groups">
-      <property name="geometry">
-       <rect>
-        <x>640</x>
-        <y>90</y>
-        <width>511</width>
-        <height>171</height>
-       </rect>
-      </property>
-      <property name="selectionMode">
-       <enum>QAbstractItemView::ExtendedSelection</enum>
-      </property>
-      <item>
-       <property name="text">
-        <string>weqe</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nowy element</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nowy element</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nowy element</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nowy element</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nowy element</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nowy element</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QRadioButton" name="radioButton_SelectedGroup">
-      <property name="geometry">
-       <rect>
-        <x>640</x>
-        <y>60</y>
-        <width>141</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Selected Group</string>
-      </property>
-      <property name="checked">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QRadioButton" name="radioButton_SelecteInEtabs">
-      <property name="geometry">
-       <rect>
-        <x>640</x>
-        <y>280</y>
-        <width>141</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Selected in Etabs</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>Output</string>
-     </attribute>
-     <widget class="QPushButton" name="pushButton_GetResults">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>101</width>
-        <height>29</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Get results</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_ClearResults">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>50</y>
-        <width>101</width>
-        <height>29</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Clear</string>
-      </property>
-     </widget>
-     <widget class="QProgressBar" name="progressBar">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>20</y>
-        <width>201</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="value">
-       <number>24</number>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_Pmax">
-      <property name="geometry">
-       <rect>
-        <x>380</x>
-        <y>20</y>
-        <width>107</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>P max</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_Pmin">
-      <property name="geometry">
-       <rect>
-        <x>460</x>
-        <y>20</y>
-        <width>107</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>P min</string>
-      </property>
-     </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>100</y>
-        <width>1311</width>
-        <height>551</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_EndsOnly">
-      <property name="geometry">
-       <rect>
-        <x>380</x>
-        <y>60</y>
-        <width>107</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>ends only</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_3">
-     <attribute name="title">
-      <string>App info</string>
-     </attribute>
-     <widget class="QPlainTextEdit" name="plainTextEdit_AppInfo">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>1311</width>
-        <height>125</height>
-       </rect>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-      <property name="plainText">
-       <string>sdasadadasd</string>
-      </property>
-     </widget>
-    </widget>
-   </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1407</width>
+     <width>1471</width>
      <height>26</height>
     </rect>
    </property>

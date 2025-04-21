@@ -17,10 +17,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_GetResults.clicked.connect(show_results)
 
         self.radioButton_SelectedGroup.clicked.connect(lambda: ui.listWidget_Groups.setEnabled(True))
+        self.radioButton_SelectedGroup.clicked.connect(lambda: ui.listWidget_Section.setEnabled(False))
+
+        self.radioButton_SelectedSection.clicked.connect(lambda: ui.listWidget_Section.setEnabled(True))
+        self.radioButton_SelectedSection.clicked.connect(lambda: ui.listWidget_Groups.setEnabled(False))
+
         self.radioButton_SelecteInEtabs.clicked.connect(lambda: ui.listWidget_Groups.setEnabled(False))
+        self.radioButton_SelecteInEtabs.clicked.connect(lambda: ui.listWidget_Section.setEnabled(False))
 
         self.set_title()
         self.set_app_info(app_info.about)
+
+        self.set_progress_1()
+        self.set_progress_2()
 
     def selected_LCs(self) -> list[str]:
         return [i.text() for i in self.listWidget_LC.selectedItems()]
@@ -36,8 +45,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.listWidget_Groups.clear()
         self.listWidget_Groups.addItems(groups_list)
 
-    def set_progress(self, value: int=0):
-        self.progressBar.setValue(value)
+    def set_progress_1(self, value: int=0):
+        self.progressBar_1.setValue(value)
+        if value == 0:
+            self.progressBar_1.setDisabled(True)
+        else:
+            self.progressBar_1.setDisabled(False)
+
+    def set_progress_2(self, value: int=0):
+        self.progressBar_2.setValue(value)
+        if value == 0:
+            self.progressBar_2.setDisabled(True)
+        else:
+            self.progressBar_2.setDisabled(False)
 
     def set_title(self, text: str=''):
         if text:
@@ -51,31 +71,31 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 def set_options():
     options = etabs_processing.Analysis_Options
-
-    options.P_max = ui.checkBox_Pmax.isChecked()
-    options.P_maxabs = ui.checkBox_Pmax.isChecked()
-    options.P_min = ui.checkBox_Pmax.isChecked()
-    options.V2_maxabs = ui.checkBox_Pmax.isChecked()
-    options.V3_maxabs = ui.checkBox_Pmax.isChecked()
-    options.T_maxabs = ui.checkBox_Pmax.isChecked()
-    options.M2_maxabs = ui.checkBox_Pmax.isChecked()
-    options.M3_maxabs = ui.checkBox_Pmax.isChecked()
-    options.M3_max = ui.checkBox_Pmax.isChecked()
-    options.M3_min = ui.checkBox_Pmax.isChecked()
-    options.Mtot_maxabs = ui.checkBox_Pmax.isChecked()
-    options.Vtot_maxabs = ui.checkBox_Pmax.isChecked()
-    options.NM3signatot_maxabs = ui.checkBox_Pmax.isChecked()
-    options.NM2signatot_maxabs = ui.checkBox_Pmax.isChecked()
-    options.NMsignatot_maxabs = ui.checkBox_Pmax.isChecked()
-    options.ends_only = ui.checkBox_EndsOnly.isChecked()
+    options.P_max = ui.checkBox_P_max.isChecked()
+    options.P_min = ui.checkBox_P_min.isChecked()
+    options.P_abs = ui.checkBox_P_abs.isChecked()
+    options.V2_abs = ui.checkBox_V2_abs.isChecked()
+    options.V3_abs = ui.checkBox_V3_abs.isChecked()
+    options.T_abs = ui.checkBox_T_abs.isChecked()
+    options.M2_abs = ui.checkBox_M2_abs.isChecked()
+    options.M3_min = ui.checkBox_M3_min.isChecked()
+    options.M3_max = ui.checkBox_M3_max.isChecked()
+    options.M3_abs = ui.checkBox_M3_abs.isChecked()
+    options.Mtot_abs = ui.checkBox_Mtot_abs.isChecked()
+    options.Vtot_abs = ui.checkBox_Vtot_abs.isChecked()
+    options.PV2_abs = ui.checkBox_PV2_abs.isChecked()
+    options.PV3_abs = ui.checkBox_PV3_abs.isChecked()
+    options.PV_abs = ui.checkBox_PV_abs.isChecked()
+    options.sigma_PM2_abs = ui.checkBox_PM2_abs.isChecked()
+    options.sigma_PM3_abs = ui.checkBox_PM3_abs.isChecked()
+    options.sigma_PN_abs = ui.checkBox_PM_abs.isChecked()
+    options.ends_only = ui.checkBox_ends_only.isChecked()
 
 def show_results():
     set_options()
     group_list = ui.selected_Groups()
     lc_list = ui.selected_LCs()
-
     report = ''
-
     for group in group_list:
         frame_list = etabs_processing.get_frame_list_for_group(group)
         report += f'{group}\n'
@@ -96,9 +116,5 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     ui = MainWindow()
     ui.show()
-
-    ui.listWidget_LC.clear() #!!!!!!!!!
-    ui.listWidget_Groups.clear() #!!!!!!!!!!
-    ui.set_progress() #!!!!!!!!!!!
 
     sys.exit(app.exec())
