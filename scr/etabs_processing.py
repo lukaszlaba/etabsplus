@@ -48,6 +48,16 @@ def get_model_filename() -> str:
 def get_lcs_list() -> list[str]:
     combinations = SapModel.RespCombo.GetNameList()[1]
     return combinations
+#checking results esist:
+# valid_combos = []
+# for combo in ComboNames:
+#     ret = SapModel.Results.Setup.SetComboSelectedForOutput(combo)
+#     if ret == 0:  # 0 means success
+#         valid_combos.append(combo)
+
+def get_cs_list() -> list[str]: #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<!!!!!!!!!!!!new to test
+    cases = SapModel.LoadCases.GetNameList()()[1]
+    return cases
 
 def get_groups_list() -> list[str]:
     groups = SapModel.GroupDef.GetNameList()[1]
@@ -106,6 +116,7 @@ def get_report(framelist, lc_list, progress=None):
     SapModel.Results.Setup.DeselectAllCasesAndCombosForOutput()
     for lc in list(lc_list):
         SapModel.Results.Setup.SetComboSelectedForOutput(lc)
+    # future add cases SetCaseSelectedForOutput(case))
     #----------------------
     P_max = 0
     P_max_record = None
@@ -162,6 +173,9 @@ def get_report(framelist, lc_list, progress=None):
     for frame in framelist:
 
         #print(SapModel.PropFrame.GetArea(sectionName))
+        #print(SapModel.PropFrame.GetArea(sectionName))
+        #print(SapModel.GetSectProps)
+        #https://docs.csiamerica.com/help-files/etabs-api-2016/html/7e0e26e6-6e25-6b5a-c523-003da72307e8.htm
 
 
 

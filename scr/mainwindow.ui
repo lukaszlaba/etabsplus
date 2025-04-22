@@ -24,7 +24,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -75,7 +75,7 @@
         <item row="1" column="2">
          <widget class="QRadioButton" name="radioButton_SelectedGroup">
           <property name="text">
-           <string>Selected Group</string>
+           <string>Selected Groups:</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -85,14 +85,14 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>Load combinations:</string>
+           <string>Selected Load Combinations:</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
          <widget class="QRadioButton" name="radioButton_SelectedSection">
           <property name="text">
-           <string>Selected Section</string>
+           <string>Selected Sections:</string>
           </property>
           <property name="checked">
            <bool>false</bool>
@@ -132,6 +132,9 @@
           <property name="text">
            <string>M3_abs</string>
           </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item row="1" column="6">
@@ -146,12 +149,18 @@
           <property name="text">
            <string>V2_abs</string>
           </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item row="0" column="9">
          <widget class="QCheckBox" name="checkBox_M2_abs">
           <property name="text">
            <string>M2_abs</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -167,12 +176,18 @@
           <property name="text">
            <string>T_abs</string>
           </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item row="0" column="10">
          <widget class="QCheckBox" name="checkBox_M3_max">
           <property name="text">
            <string>M3_max</string>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -187,6 +202,9 @@
          <widget class="QCheckBox" name="checkBox_P_min">
           <property name="text">
            <string>P_min</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -211,7 +229,7 @@
          </widget>
         </item>
         <item row="1" column="13">
-         <widget class="QCheckBox" name="checkBox_PM_abs_2">
+         <widget class="QCheckBox" name="checkBox_reduce_LC_name">
           <property name="text">
            <string>reduce LC name</string>
           </property>
@@ -285,6 +303,9 @@
           <property name="text">
            <string>V3_abs</string>
           </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item row="1" column="11" colspan="2">
@@ -311,6 +332,9 @@
          <widget class="QCheckBox" name="checkBox_P_max">
           <property name="text">
            <string>P_max</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
