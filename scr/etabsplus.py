@@ -89,9 +89,9 @@ def set_options():
     options.PV_abs = ui.checkBox_PV_abs.isChecked()
     options.sigma_PM2_abs = ui.checkBox_PM2_abs.isChecked()
     options.sigma_PM3_abs = ui.checkBox_PM3_abs.isChecked()
-    options.sigma_PN_abs = ui.checkBox_PM_abs.isChecked()
+    options.sigma_PM_abs = ui.checkBox_PM_abs.isChecked()
     options.ends_only = ui.checkBox_ends_only.isChecked()
-
+    options.reduce_LC_name= ui.checkBox_PM_abs_2.isChecked() #<!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 def show_results():
     ui.plainTextEdit.setPlainText('Processing....')
@@ -143,3 +143,12 @@ if __name__ == "__main__":
     ui = MainWindow()
     ui.show()
     sys.exit(app.exec())
+
+#Icon
+#https://icon-icons.com/icon/math-plus-minus/158290
+#command used to frozening with pyinstaller
+#pyinstaller --noconsole --icon=app.ico C:\Users\LABAL\source_etabsplus\etabsplus\scr\etabsplus.py
+
+
+#https://github.com/enthought/comtypes/issues/340
+#--hidden-import=comtypes.gen.{PowerPoint / Word / ...}   CSiAPIv1

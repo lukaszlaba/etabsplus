@@ -24,10 +24,11 @@ class Analysis_Options:
     PV2_abs = True
     PV3_abs = True
     PV_abs = True
-    sigma_PM3_abs = True
+    sigma_PM2_abs = True
     sigma_PM3_abs = True
     sigma_PM_abs = True
     ends_only = True
+    reduce_LC_name = True
 
 def connect():
     global ETABSObject, SapModel
@@ -151,11 +152,19 @@ def get_report(framelist, lc_list, progress=None):
     NMsignatot_maxabs = 0
     NMsignatot_maxabs_record = None
 
+
+    #PV2, PV3, PV
+
     #------------------------
     frame_results = []
     total = len(framelist)
     n = 0
     for frame in framelist:
+
+        #print(SapModel.PropFrame.GetArea(sectionName))
+
+
+
         NumberResults,Obj, ObjSta,Elm,ElmSta,LoadCase,StepType, StepNum, P, V2, V3, T, M2, M3, Status = SapModel.Results.FrameForce(frame, 0)
 
         obj_ends = [0, max(ObjSta)]
@@ -164,6 +173,11 @@ def get_report(framelist, lc_list, progress=None):
             if Analysis_Options.ends_only:
                 if not ObjSta[i] in obj_ends:
                     continue
+
+            objsta = str(round(ObjSta[i],2))
+            if ObjSta[i] == obj_ends[0]: objsta = str(round(ObjSta[i],2)) + '(i)'
+            if ObjSta[i] == obj_ends[1]: objsta = str(round(ObjSta[i],2)) + '(j)'
+
             p = P[i]
             v2 = V2[i]
             v3 = V3[i]
@@ -176,7 +190,8 @@ def get_report(framelist, lc_list, progress=None):
             nm2signatot = sigma(p*1E3, m2*1E3, 0, b, h)
             nmsignatot = sigma(p*1E3, m2*1E3, m3*1E3, b, h)
 
-            this_record = ([frame, LoadCase[i], StepType[i], ObjSta[i], P[i], V2[i], V3[i], T[i], M2[i], M3[i]])
+
+            this_record = ([frame, LoadCase[i], StepType[i], objsta, P[i], V2[i], V3[i], T[i], M2[i], M3[i]])
 
             if p > P_max:
                 P_max = p
@@ -254,41 +269,41 @@ def get_report(framelist, lc_list, progress=None):
     #------------making output table
 
     out = []
-    if P_max_record: out.append(P_max_record)
-    if P_min_record: out.append(P_min_record)
+    if Analysis_Options.P_max: out.append(P_max_record)
+    if Analysis_Options.P_min: out.append(P_min_record)
 
-    if P_maxabs_record: out.append(P_maxabs_record)
+    if Analysis_Options.P_abs: out.append(P_maxabs_record)
 
-    if V2_maxabs_record: out.append(V2_maxabs_record)
-    if V3_maxabs_record: out.append(V3_maxabs_record)
+    if Analysis_Options.V2_abs: out.append(V2_maxabs_record)
+    if Analysis_Options.V3_abs: out.append(V3_maxabs_record)
 
-    if T_maxabs_record: out.append(T_maxabs_record)
+    if Analysis_Options.T_abs: out.append(T_maxabs_record)
 
-    if M2_maxabs_record: out.append(M2_maxabs_record)
+    if Analysis_Options.M2_abs: out.append(M2_maxabs_record)
 
-    if M3_maxabs_record: out.append(M3_maxabs_record)
-
-
-    if M3_max_record: out.append(M3_max_record)
-    if M3_min_record: out.append(M3_min_record)
-
-    if Mtot_maxabs_record: out.append(Mtot_maxabs_record)
+    if Analysis_Options.M3_abs: out.append(M3_maxabs_record)
 
 
-    if NM2signatot_maxabs_record: out.append(NM2signatot_maxabs_record)
-    if NM3signatot_maxabs_record: out.append(NM3signatot_maxabs_record)
-    if NMsignatot_maxabs_record: out.append(NMsignatot_maxabs_record)
+    if Analysis_Options.M3_max: out.append(M3_max_record)
+    if Analysis_Options.M3_min: out.append(M3_min_record)
 
-    if Vtot_maxabs_record: out.append(Vtot_maxabs_record)
+    if Analysis_Options.Mtot_abs: out.append(Mtot_maxabs_record)
+
+
+    if Analysis_Options.sigma_PM2_abs: out.append(NM2signatot_maxabs_record)
+    if Analysis_Options.sigma_PM3_abs: out.append(NM3signatot_maxabs_record)
+    if Analysis_Options.sigma_PM_abs: out.append(NMsignatot_maxabs_record)
+
+    if Analysis_Options.Vtot_abs: out.append(Vtot_maxabs_record)
 
 
     # LC name reduce
-    if True:
+    if Analysis_Options.reduce_LC_name:
         for row in out:
             if len(row[2])>20:
                 row[2] = row[2][:20]+'..'
 
-    col_name = ['Case' ,"Frame", "LC", "StepType", "ObjSta", "P[kN]", "V2[kN]", "V3[kN]", "T[kNm]", "M2[kNm]", "M3[kNm]"]
+    col_name = ['Case' ,"Frame", "LC", "StepType", "ObjSta[m]", "P[kN]", "V2[kN]", "V3[kN]", "T[kNm]", "M2[kNm]", "M3[kNm]"]
     print('\n\n')
 
     report = ''
