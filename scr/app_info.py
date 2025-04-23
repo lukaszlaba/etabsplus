@@ -1,6 +1,6 @@
 appname = 'Etabsplus'
 
-version = '0.0.1'
+version = '0.0.2'
 
 about = '''Etabsplus - Etabs member result extract tool
 

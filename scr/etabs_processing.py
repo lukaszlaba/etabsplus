@@ -45,18 +45,21 @@ def set_unitsystem(eUnit: str='KN_m_C'):
 def get_model_filename() -> str:
     return os.path.basename(SapModel.GetModelFilename())
 
-def get_lcs_list() -> list[str]:
-    combinations = SapModel.RespCombo.GetNameList()[1]
-    return combinations
-#checking results esist:
-# valid_combos = []
-# for combo in ComboNames:
-#     ret = SapModel.Results.Setup.SetComboSelectedForOutput(combo)
-#     if ret == 0:  # 0 means success
-#         valid_combos.append(combo)
+def get_lcs_list(filter_calulated_only: bool=False) -> list[str]:
+    all_combinations = SapModel.RespCombo.GetNameList()[1]
+    combination_list = []
+    if filter_calulated_only:
+        for combo in combination_list:
+            ret = SapModel.Results.Setup.SetComboSelectedForOutput(combo)
+            if ret == 0:  # 0 means success
+                combination_list.append(combo)
+    else:
+        combination_list = all_combinations
+    SapModel.Results.Setup.DeselectAllCasesAndCombosForOutput()
+    return combination_list
 
-def get_cs_list() -> list[str]: #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<!!!!!!!!!!!!new to test
-    cases = SapModel.LoadCases.GetNameList()()[1]
+def get_cs_list() -> list[str]:
+    cases = SapModel.LoadCases.GetNameList()[1]
     return cases
 
 def get_groups_list() -> list[str]:
