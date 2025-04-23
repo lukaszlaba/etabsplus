@@ -1,6 +1,6 @@
 appname = 'Etabsplus'
 
-version = '0.0.2'
+version = '0.0.3'
 
 about = '''Etabsplus - Etabs member result extract tool
 
@@ -14,4 +14,8 @@ published by the Free Software Foundation; either version 2 of the License, or (
 Etabsplus is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
+Project website: https://github.com/lukaszlaba/etabsplus
+Code repository: https://github.com/lukaszlaba/etabsplus
+Windows binaries download: https://github.com/lukaszlaba/etabsplus/releases
+Contact: Łukasz Laba <lukaszlaba@gmail.com>
 '''

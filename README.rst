@@ -25,7 +25,7 @@ Link to windows binaries download is shown below.
 
 https://github.com/lukaszlaba/Etabsplus/releases
 
-You can also run Etabsplus by using Python engine. After the Python and needed libraries are installed, just run Etabsplus.py file. Etabsplus is based on Python 3 and no\n-standard Python libraries - PyQt5, tabulate and comtypes.
+You can also run Etabsplus by using Python engine. After the Python and needed libraries are installed, just run Etabsplus.py file. Etabsplus is based on Python 3 and non-standard Python libraries - PyQt5, tabulate and comtypes.
 
 License
 -------

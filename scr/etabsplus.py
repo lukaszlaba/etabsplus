@@ -143,13 +143,7 @@ def connect_etabs():
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     ui = MainWindow()
-    #---Disabled for now
-    ui.checkBox_PM2_abs.setDisabled(True)
-    ui.checkBox_PM3_abs.setDisabled(True)
-    ui.checkBox_PM_abs.setDisabled(True)
-    ui.checkBox_PV2_abs.setDisabled(True)
-    ui.checkBox_PV3_abs.setDisabled(True)
-    ui.checkBox_PV_abs.setDisabled(True)
+    ui.plainTextEdit_AppInfo.setEnabled(True)
     #----------
     ui.show()
     sys.exit(app.exec())
