@@ -69,7 +69,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def set_app_info(self, text: str=''):
         self.plainTextEdit_AppInfo.setPlainText(text)
 
-
 def set_options():
     options = etabs_processing.Analysis_Options
     options.P_max = ui.checkBox_P_max.isChecked()
@@ -133,7 +132,10 @@ def show_results():
 
 def connect_etabs():
     etabs_processing.connect()
-    ui.set_list_of_LCs(etabs_processing.get_lcs_list())
+    if ui.checkBox_calulated_lc_only.isChecked():
+        ui.set_list_of_LCs(etabs_processing.get_lcs_list(filter_calulated_only=True))
+    else:
+        ui.set_list_of_LCs(etabs_processing.get_lcs_list(filter_calulated_only=False))
     ui.set_list_of_Sections(etabs_processing.get_frame_props_list())
     ui.set_list_of_Groups(etabs_processing.get_groups_list())
     ui.set_title(etabs_processing.get_model_filename())

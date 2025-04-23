@@ -49,9 +49,13 @@ def get_lcs_list(filter_calulated_only: bool=False) -> list[str]:
     all_combinations = SapModel.RespCombo.GetNameList()[1]
     combination_list = []
     if filter_calulated_only:
-        for combo in combination_list:
-            ret = SapModel.Results.Setup.SetComboSelectedForOutput(combo)
-            if ret == 0:  # 0 means success
+        example_frame_mumber = SapModel.FrameObj.GetNameList()[1][0]
+        for combo in all_combinations:
+            # add this combo to output and try het results for example_frame_mumber to check there are results
+            SapModel.Results.Setup.SetComboSelectedForOutput(combo)
+            status = SapModel.Results.FrameForce(example_frame_mumber, 0)[-1]
+            SapModel.Results.Setup.DeselectAllCasesAndCombosForOutput()
+            if status == 0:  # 0 means success
                 combination_list.append(combo)
     else:
         combination_list = all_combinations
