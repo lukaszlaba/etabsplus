@@ -171,8 +171,6 @@ def get_report(framelist, lc_list, progress=None):
     PV_maxabs = 0
     PV_maxabs_record = None
 
-    #PV2, PV3, PV
-
     #------------------------
     frame_results = []
     total = len(framelist)
@@ -335,7 +333,6 @@ def get_report(framelist, lc_list, progress=None):
                 row[2] = row[2][:20]+'..'
 
     col_name = ['Case' ,"Frame", "LC", "StepType", "ObjSta[m]", "P[kN]", "V2[kN]", "V3[kN]", "T[kNm]", "M2[kNm]", "M3[kNm]"]
-    print('\n\n')
 
     report = ''
 
