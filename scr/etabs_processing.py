@@ -208,7 +208,7 @@ def get_report(framelist, lc_list, progress=None):
             pv = (p**2 + v2**2 + v3**2)**0.5
 
 
-            this_record = ([frame, LoadCase[i], StepType[i], objsta, P[i], V2[i], V3[i], T[i], M2[i], M3[i]])
+            this_record = ([frame, LoadCase[i], StepType[i], objsta, P[i], V2[i], V3[i], T[i], M2[i], M3[i], section])
 
             if p > P_max:
                 P_max = p
@@ -332,7 +332,7 @@ def get_report(framelist, lc_list, progress=None):
             if len(row[2])>20:
                 row[2] = row[2][:20]+'..'
 
-    col_name = ['Case' ,"Frame", "LC", "StepType", "ObjSta[m]", "P[kN]", "V2[kN]", "V3[kN]", "T[kNm]", "M2[kNm]", "M3[kNm]"]
+    col_name = ['Case' ,"Frame", "LC", "StepType", "ObjSta[m]", "P[kN]", "V2[kN]", "V3[kN]", "T[kNm]", "M2[kNm]", "M3[kNm]", "Section"]
 
     report = ''
 

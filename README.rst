@@ -7,9 +7,10 @@ Etabsplus - Etabs member result extract tool
 
 Changelog
 ---------
+Etabsplus 0.0.3 (alpha stage for testing)
+  - PM and PV added
 
-
-Etabsplus 0.0.1 (alpha stage for testing)
+Etabsplus 0.0.2 (alpha stage for testing)
   - first public release
 
 Description

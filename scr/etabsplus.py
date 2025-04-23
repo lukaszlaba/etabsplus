@@ -107,7 +107,7 @@ def show_results():
         i = 0
         for group in group_list:
             frame_list = etabs_processing.get_frame_list_for_group(group)
-            report += f'{group}\n'
+            report += f'Group {group}\n'
             report += etabs_processing.get_report(frame_list, lc_list,  progress = ui)
             report += '\n'
             i += 1
@@ -117,7 +117,7 @@ def show_results():
         i = 0
         for section in section_list:
             frame_list = etabs_processing.get_frame_list_for_prop(section)
-            report += f'{section}\n'
+            report += f'Section {section}\n'
             report += etabs_processing.get_report(frame_list, lc_list,  progress = ui)
             report += '\n'
             i += 1
@@ -143,6 +143,7 @@ def connect_etabs():
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     ui = MainWindow()
+    ui.checkBox_reduce_LC_name.setChecked(True)
     #----------
     ui.show()
     sys.exit(app.exec())
