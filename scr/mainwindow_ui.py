@@ -149,9 +149,9 @@ class Ui_MainWindow(object):
         self.checkBox_V2_abs.setChecked(True)
         self.checkBox_V2_abs.setObjectName("checkBox_V2_abs")
         self.gridLayout_2.addWidget(self.checkBox_V2_abs, 0, 6, 1, 1)
-        self.checkBox_PM3_abs_2 = QtWidgets.QCheckBox(self.tab_2)
-        self.checkBox_PM3_abs_2.setObjectName("checkBox_PM3_abs_2")
-        self.gridLayout_2.addWidget(self.checkBox_PM3_abs_2, 1, 8, 1, 1)
+        self.checkBox_PM2_abs = QtWidgets.QCheckBox(self.tab_2)
+        self.checkBox_PM2_abs.setObjectName("checkBox_PM2_abs")
+        self.gridLayout_2.addWidget(self.checkBox_PM2_abs, 1, 8, 1, 1)
         self.pushButton_GetResults = QtWidgets.QPushButton(self.tab_2)
         self.pushButton_GetResults.setObjectName("pushButton_GetResults")
         self.gridLayout_2.addWidget(self.pushButton_GetResults, 0, 0, 3, 1)
@@ -196,7 +196,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -227,7 +227,7 @@ class Ui_MainWindow(object):
         self.checkBox_V3_abs.setText(_translate("MainWindow", "V3_abs"))
         self.checkBox_reduce_LC_name.setText(_translate("MainWindow", "reduce LC name"))
         self.checkBox_V2_abs.setText(_translate("MainWindow", "V2_abs"))
-        self.checkBox_PM3_abs_2.setText(_translate("MainWindow", "σ_PM2_abs"))
+        self.checkBox_PM2_abs.setText(_translate("MainWindow", "σ_PM2_abs"))
         self.pushButton_GetResults.setText(_translate("MainWindow", "Get results"))
         self.checkBox_PV2_abs.setText(_translate("MainWindow", "PV2_abs"))
         self.checkBox_M3_abs.setText(_translate("MainWindow", "M3_abs"))

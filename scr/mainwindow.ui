@@ -24,7 +24,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -328,7 +328,7 @@
          </widget>
         </item>
         <item row="1" column="8">
-         <widget class="QCheckBox" name="checkBox_PM3_abs_2">
+         <widget class="QCheckBox" name="checkBox_PM2_abs">
           <property name="text">
            <string>σ_PM2_abs</string>
           </property>
