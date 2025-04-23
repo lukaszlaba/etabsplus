@@ -31,37 +31,20 @@
         <string>Beams query setting</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout">
-        <item row="2" column="0">
+        <item row="3" column="0">
          <widget class="QListWidget" name="listWidget_LC">
           <property name="selectionMode">
            <enum>QAbstractItemView::ExtendedSelection</enum>
           </property>
          </widget>
         </item>
-        <item row="2" column="1">
-         <widget class="QListWidget" name="listWidget_Section">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="selectionMode">
-           <enum>QAbstractItemView::ExtendedSelection</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2">
-         <widget class="QListWidget" name="listWidget_Groups">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="selectionMode">
-           <enum>QAbstractItemView::ExtendedSelection</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="2">
-         <widget class="QRadioButton" name="radioButton_SelecteInEtabs">
+        <item row="1" column="1">
+         <widget class="QRadioButton" name="radioButton_SelectedSection">
           <property name="text">
-           <string>Members Currently Selected in Etabs</string>
+           <string>Selected Sections:</string>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -69,6 +52,16 @@
          <widget class="QPushButton" name="pushButton_GetEtabsData">
           <property name="text">
            <string>Get model data</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QListWidget" name="listWidget_Section">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::ExtendedSelection</enum>
           </property>
          </widget>
         </item>
@@ -89,13 +82,27 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="1">
-         <widget class="QRadioButton" name="radioButton_SelectedSection">
+        <item row="4" column="2">
+         <widget class="QRadioButton" name="radioButton_SelecteInEtabs">
           <property name="text">
-           <string>Selected Sections:</string>
+           <string>Members Currently Selected in Etabs</string>
           </property>
-          <property name="checked">
-           <bool>false</bool>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QListWidget" name="listWidget_Groups">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::ExtendedSelection</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QCheckBox" name="checkBox_calulated_lc_only">
+          <property name="text">
+           <string>filter calculated only</string>
           </property>
          </widget>
         </item>
