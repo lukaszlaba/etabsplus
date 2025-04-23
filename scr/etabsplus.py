@@ -143,16 +143,9 @@ def connect_etabs():
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     ui = MainWindow()
-    ui.plainTextEdit_AppInfo.setEnabled(True)
     #----------
     ui.show()
     sys.exit(app.exec())
 
-#Icon
-#https://icon-icons.com/icon/math-plus-minus/158290
 #command used to frozening with pyinstaller
 #pyinstaller --noconsole --icon=app.ico C:\Users\LABAL\source_etabsplus\etabsplus\scr\etabsplus.py
-
-
-#https://github.com/enthought/comtypes/issues/340
-#--hidden-import=comtypes.gen.{PowerPoint / Word / ...}   CSiAPIv1

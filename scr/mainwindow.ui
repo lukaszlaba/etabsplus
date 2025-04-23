@@ -102,7 +102,7 @@
         <item row="2" column="0">
          <widget class="QCheckBox" name="checkBox_calulated_lc_only">
           <property name="text">
-           <string>filter calculated only</string>
+           <string>filter calculated only (set it before getting model data)</string>
           </property>
          </widget>
         </item>
@@ -113,19 +113,18 @@
         <string>Output</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="1" column="8">
-         <widget class="QCheckBox" name="checkBox_PM3_abs">
-          <property name="text">
-           <string>σ_PM3_abs</string>
+        <item row="0" column="18">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
           </property>
-         </widget>
-        </item>
-        <item row="1" column="9">
-         <widget class="QCheckBox" name="checkBox_PM2_abs">
-          <property name="text">
-           <string>σ_PM2_abs</string>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
           </property>
-         </widget>
+         </spacer>
         </item>
         <item row="1" column="3">
          <widget class="QCheckBox" name="checkBox_Vtot_abs">
@@ -134,13 +133,16 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="12">
-         <widget class="QCheckBox" name="checkBox_M3_abs">
-          <property name="text">
-           <string>M3_abs</string>
+        <item row="0" column="1">
+         <widget class="QProgressBar" name="progressBar_1">
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>16777215</height>
+           </size>
           </property>
-          <property name="checked">
-           <bool>true</bool>
+          <property name="value">
+           <number>0</number>
           </property>
          </widget>
         </item>
@@ -151,13 +153,16 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="6">
-         <widget class="QCheckBox" name="checkBox_V2_abs">
-          <property name="text">
-           <string>V2_abs</string>
+        <item row="4" column="1">
+         <widget class="QPushButton" name="pushButton_zoomOut">
+          <property name="maximumSize">
+           <size>
+            <width>75</width>
+            <height>16777215</height>
+           </size>
           </property>
-          <property name="checked">
-           <bool>true</bool>
+          <property name="text">
+           <string>-</string>
           </property>
          </widget>
         </item>
@@ -178,13 +183,10 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="8">
-         <widget class="QCheckBox" name="checkBox_T_abs">
+        <item row="1" column="10">
+         <widget class="QCheckBox" name="checkBox_PM_abs">
           <property name="text">
-           <string>T_abs</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
+           <string>σ_PM_abs</string>
           </property>
          </widget>
         </item>
@@ -198,6 +200,26 @@
           </property>
          </widget>
         </item>
+        <item row="3" column="0" colspan="20">
+         <widget class="QPlainTextEdit" name="plainTextEdit">
+          <property name="font">
+           <font>
+            <family>Courier New</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="4">
+         <widget class="QCheckBox" name="checkBox_Mtot_abs">
+          <property name="text">
+           <string>Mtot_abs</string>
+          </property>
+         </widget>
+        </item>
         <item row="0" column="11">
          <widget class="QCheckBox" name="checkBox_M3_min">
           <property name="text">
@@ -205,40 +227,33 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="4">
-         <widget class="QCheckBox" name="checkBox_P_min">
+        <item row="0" column="8">
+         <widget class="QCheckBox" name="checkBox_T_abs">
           <property name="text">
-           <string>P_min</string>
+           <string>T_abs</string>
           </property>
           <property name="checked">
            <bool>true</bool>
           </property>
          </widget>
         </item>
-        <item row="0" column="18">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="10">
-         <widget class="QCheckBox" name="checkBox_PM_abs">
+        <item row="1" column="11" colspan="2">
+         <widget class="QCheckBox" name="checkBox_ends_only">
           <property name="text">
-           <string>σ_PM_abs</string>
+           <string>ends_only (forces for connections)</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="13">
-         <widget class="QCheckBox" name="checkBox_reduce_LC_name">
+        <item row="4" column="0">
+         <widget class="QPushButton" name="pushButton_zoomIn">
+          <property name="maximumSize">
+           <size>
+            <width>75</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="text">
-           <string>reduce LC name</string>
+           <string>+</string>
           </property>
          </widget>
         </item>
@@ -258,43 +273,13 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="5">
-         <widget class="QCheckBox" name="checkBox_PV2_abs">
+        <item row="0" column="3">
+         <widget class="QCheckBox" name="checkBox_P_max">
           <property name="text">
-           <string>PV2_abs</string>
+           <string>P_max</string>
           </property>
-         </widget>
-        </item>
-        <item row="0" column="0" rowspan="3">
-         <widget class="QPushButton" name="pushButton_GetResults">
-          <property name="text">
-           <string>Get results</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <widget class="QPushButton" name="pushButton_zoomIn">
-          <property name="maximumSize">
-           <size>
-            <width>75</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>+</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QProgressBar" name="progressBar_1">
-          <property name="maximumSize">
-           <size>
-            <width>150</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="value">
-           <number>0</number>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -302,6 +287,16 @@
          <widget class="QCheckBox" name="checkBox_PV_abs">
           <property name="text">
            <string>PV_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="4">
+         <widget class="QCheckBox" name="checkBox_P_min">
+          <property name="text">
+           <string>P_min</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -315,53 +310,58 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="11" colspan="2">
-         <widget class="QCheckBox" name="checkBox_ends_only">
+        <item row="1" column="13">
+         <widget class="QCheckBox" name="checkBox_reduce_LC_name">
           <property name="text">
-           <string>ends_only (forces for connections)</string>
+           <string>reduce LC name</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="0" colspan="20">
-         <widget class="QPlainTextEdit" name="plainTextEdit">
-          <property name="font">
-           <font>
-            <family>Courier New</family>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3">
-         <widget class="QCheckBox" name="checkBox_P_max">
+        <item row="0" column="6">
+         <widget class="QCheckBox" name="checkBox_V2_abs">
           <property name="text">
-           <string>P_max</string>
+           <string>V2_abs</string>
           </property>
           <property name="checked">
            <bool>true</bool>
           </property>
          </widget>
         </item>
-        <item row="1" column="4">
-         <widget class="QCheckBox" name="checkBox_Mtot_abs">
+        <item row="1" column="8">
+         <widget class="QCheckBox" name="checkBox_PM3_abs_2">
           <property name="text">
-           <string>Mtot_abs</string>
+           <string>σ_PM2_abs</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="1">
-         <widget class="QPushButton" name="pushButton_zoomOut">
-          <property name="maximumSize">
-           <size>
-            <width>75</width>
-            <height>16777215</height>
-           </size>
-          </property>
+        <item row="0" column="0" rowspan="3">
+         <widget class="QPushButton" name="pushButton_GetResults">
           <property name="text">
-           <string>-</string>
+           <string>Get results</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="5">
+         <widget class="QCheckBox" name="checkBox_PV2_abs">
+          <property name="text">
+           <string>PV2_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="12">
+         <widget class="QCheckBox" name="checkBox_M3_abs">
+          <property name="text">
+           <string>M3_abs</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="9">
+         <widget class="QCheckBox" name="checkBox_PM3_abs">
+          <property name="text">
+           <string>σ_PM3_abs</string>
           </property>
          </widget>
         </item>
@@ -375,7 +375,7 @@
         <item row="0" column="0">
          <widget class="QPlainTextEdit" name="plainTextEdit_AppInfo">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="maximumSize">
            <size>
