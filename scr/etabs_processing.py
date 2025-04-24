@@ -293,36 +293,36 @@ def get_report(framelist, lc_list, progress=None):
     #------------making output table
 
     out = []
-    if Analysis_Options.P_max: out.append(P_max_record)
-    if Analysis_Options.P_min: out.append(P_min_record)
+    if P_max_record and Analysis_Options.P_max: out.append(P_max_record)
+    if P_min_record and Analysis_Options.P_min: out.append(P_min_record)
 
-    if Analysis_Options.P_abs: out.append(P_maxabs_record)
+    if P_maxabs_record and Analysis_Options.P_abs: out.append(P_maxabs_record)
 
-    if Analysis_Options.V2_abs: out.append(V2_maxabs_record)
-    if Analysis_Options.V3_abs: out.append(V3_maxabs_record)
+    if V2_maxabs_record and Analysis_Options.V2_abs: out.append(V2_maxabs_record)
+    if V3_maxabs_record and Analysis_Options.V3_abs: out.append(V3_maxabs_record)
 
-    if Analysis_Options.T_abs: out.append(T_maxabs_record)
+    if T_maxabs_record and Analysis_Options.T_abs: out.append(T_maxabs_record)
 
-    if Analysis_Options.M2_abs: out.append(M2_maxabs_record)
+    if M2_maxabs_record and Analysis_Options.M2_abs: out.append(M2_maxabs_record)
 
-    if Analysis_Options.M3_abs: out.append(M3_maxabs_record)
-
-
-    if Analysis_Options.M3_max: out.append(M3_max_record)
-    if Analysis_Options.M3_min: out.append(M3_min_record)
-
-    if Analysis_Options.Mtot_abs: out.append(Mtot_maxabs_record)
+    if M3_maxabs_record and Analysis_Options.M3_abs: out.append(M3_maxabs_record)
 
 
-    if Analysis_Options.sigma_PM2_abs: out.append(NM2signatot_maxabs_record)
-    if Analysis_Options.sigma_PM3_abs: out.append(NM3signatot_maxabs_record)
-    if Analysis_Options.sigma_PM_abs: out.append(NMsignatot_maxabs_record)
+    if M3_max_record and Analysis_Options.M3_max: out.append(M3_max_record)
+    if M3_min_record and Analysis_Options.M3_min: out.append(M3_min_record)
 
-    if Analysis_Options.Vtot_abs: out.append(Vtot_maxabs_record)
+    if Mtot_maxabs_record and Analysis_Options.Mtot_abs: out.append(Mtot_maxabs_record)
 
-    if Analysis_Options.PV2_abs: out.append(PV2_maxabs_record)
-    if Analysis_Options.PV3_abs: out.append(PV3_maxabs_record)
-    if Analysis_Options.PV_abs: out.append(PV_maxabs_record)
+
+    if NM2signatot_maxabs_record and Analysis_Options.sigma_PM2_abs: out.append(NM2signatot_maxabs_record)
+    if NM3signatot_maxabs_record and Analysis_Options.sigma_PM3_abs: out.append(NM3signatot_maxabs_record)
+    if NMsignatot_maxabs_record and Analysis_Options.sigma_PM_abs: out.append(NMsignatot_maxabs_record)
+
+    if Vtot_maxabs_record and Analysis_Options.Vtot_abs: out.append(Vtot_maxabs_record)
+
+    if PV2_maxabs_record and Analysis_Options.PV2_abs: out.append(PV2_maxabs_record)
+    if PV3_maxabs_record and Analysis_Options.PV3_abs: out.append(PV3_maxabs_record)
+    if PV3_maxabs_record and Analysis_Options.PV_abs: out.append(PV3_maxabs_record)
 
 
 
