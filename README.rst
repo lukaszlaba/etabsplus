@@ -7,6 +7,11 @@ Etabsplus - Etabs member result extract tool
 
 Changelog
 ---------
+Etabsplus 0.0.4 (alpha stage for testing)
+  - station selection added
+
+Changelog
+---------
 Etabsplus 0.0.3 (alpha stage for testing)
   - PM and PV added
 

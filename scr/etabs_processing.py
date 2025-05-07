@@ -27,7 +27,11 @@ class Analysis_Options:
     sigma_PM2_abs = True
     sigma_PM3_abs = True
     sigma_PM_abs = True
-    ends_only = True
+    ends_only = False
+    i_only = False
+    j_only = True
+
+
     reduce_LC_name = True
 
 def connect():
@@ -60,6 +64,8 @@ def get_lcs_list(filter_calulated_only: bool=False) -> list[str]:
     else:
         combination_list = all_combinations
     SapModel.Results.Setup.DeselectAllCasesAndCombosForOutput()
+    combination_list = list(combination_list)
+    combination_list.sort()
     return combination_list
 
 def get_cs_list() -> list[str]:
@@ -96,8 +102,6 @@ def get_frame_list_for_prop(prop_name: str) -> list[str]:
         if s == prop_name:
             frames.append(f)
     return frames
-
-
 
 def get_frame_list_current_selected():
     number_selected, object_types, object_names, _  = SapModel.SelectObj.GetSelected()
@@ -182,10 +186,20 @@ def get_report(framelist, lc_list, progress=None):
         #https://docs.csiamerica.com/help-files/etabs-api-2016/html/7e0e26e6-6e25-6b5a-c523-003da72307e8.htm
         # this frame forces
         NumberResults,Obj, ObjSta,Elm,ElmSta,LoadCase,StepType, StepNum, P, V2, V3, T, M2, M3, Status = SapModel.Results.FrameForce(frame, 0)
-        obj_ends = [0, max(ObjSta)]
+        obj_ends = [min(ObjSta), max(ObjSta)]
         for i in range(len(P)):
+
+
             if Analysis_Options.ends_only:
                 if not ObjSta[i] in obj_ends:
+                    continue
+
+            if Analysis_Options.i_only:
+                if not ObjSta[i] == obj_ends[0]:
+                    continue
+
+            if Analysis_Options.j_only:
+                if not ObjSta[i] == obj_ends[1]:
                     continue
 
             objsta = str(round(ObjSta[i],2))
@@ -342,6 +356,12 @@ def get_report(framelist, lc_list, progress=None):
         report += '(Entire member length included for analysis)\n'
     report += tabulate(out, headers=col_name, tablefmt='psql', floatfmt=".2f")
 
+    #selcting members in etabs at the end in progress - turned off for now
+    if False:
+        SapModel.SelectObj.ClearSelection()
+        for i in out:
+            SapModel.FrameObj.SetSelected(i[1], True)
+        SapModel.View.RefreshView()
     return report
 
 

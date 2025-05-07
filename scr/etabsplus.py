@@ -89,7 +89,9 @@ def set_options():
     options.sigma_PM2_abs = ui.checkBox_PM2_abs.isChecked()
     options.sigma_PM3_abs = ui.checkBox_PM3_abs.isChecked()
     options.sigma_PM_abs = ui.checkBox_PM_abs.isChecked()
-    options.ends_only = ui.checkBox_ends_only.isChecked()
+    options.ends_only = ui.radioButton_ends_only.isChecked()
+    options.i_only = ui.radioButton_i_only.isChecked()
+    options.j_only = ui.radioButton_j_only.isChecked()
     options.reduce_LC_name= ui.checkBox_reduce_LC_name.isChecked()
 
 def show_results():
