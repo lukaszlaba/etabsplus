@@ -7,6 +7,10 @@ Etabsplus - Etabs member result extract tool
 
 Changelog
 ---------
+
+Etabsplus 0.0.5 (alpha stage for testing)
+  - output format updated
+
 Etabsplus 0.0.4 (alpha stage for testing)
   - station selection added
 

@@ -31,8 +31,8 @@ class Analysis_Options:
     i_only = False
     j_only = True
 
-
     reduce_LC_name = True
+    show_memberlist = True
 
 def connect():
     global ETABSObject, SapModel
@@ -350,10 +350,21 @@ def get_report(framelist, lc_list, progress=None):
 
     report = ''
 
+    report += 'Etabs model: '+ get_model_filename() + '\n'
+
     if Analysis_Options.ends_only:
-        report += '(Member ends analysis only - for connection design purpose)\n'
+            report += 'Member start (i) and end (j) analysis only.\n'
+    elif Analysis_Options.i_only:
+        report += 'Member start (i) analysis only.\n'
+    elif Analysis_Options.j_only:
+        report += 'Member end (j) analysis only.\n'
     else:
-        report += '(Entire member length included for analysis)\n'
+        report += 'Entire member length included for analysis.\n'
+
+    if Analysis_Options.show_memberlist:
+        report += 'List of members:\n'
+        report += str(framelist) + '\n'
+
     report += tabulate(out, headers=col_name, tablefmt='psql', floatfmt=".2f")
 
     #selcting members in etabs at the end in progress - turned off for now
@@ -363,8 +374,6 @@ def get_report(framelist, lc_list, progress=None):
             SapModel.FrameObj.SetSelected(i[1], True)
         SapModel.View.RefreshView()
     return report
-
-
 
 if __name__ == '__main__':
     connect()
@@ -376,8 +385,8 @@ if __name__ == '__main__':
     print(get_frame_list_for_prop('FW600X500X32X56'))
     print(get_frame_list_current_selected())
 
-    test_frame_list = get_frame_list_for_group('L30_W1')
+    #test_frame_list = get_frame_list_for_group('L30_W1')
+    test_frame_list = get_frame_list_current_selected()
     test_lc_list = get_lcs_list()[:5]
     print(get_report(test_frame_list, test_lc_list))
     pass
-

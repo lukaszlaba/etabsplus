@@ -93,6 +93,7 @@ def set_options():
     options.i_only = ui.radioButton_i_only.isChecked()
     options.j_only = ui.radioButton_j_only.isChecked()
     options.reduce_LC_name= ui.checkBox_reduce_LC_name.isChecked()
+    options.show_memberlist= ui.checkBox_mlist.isChecked()
 
 def show_results():
     ui.plainTextEdit.setPlainText('Processing....')
