@@ -113,23 +113,52 @@
         <string>Output</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="18">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="3">
-         <widget class="QCheckBox" name="checkBox_Vtot_abs">
+        <item row="0" column="0" rowspan="3">
+         <widget class="QPushButton" name="pushButton_GetResults">
           <property name="text">
-           <string>Vtot_abs</string>
+           <string>Get results</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="6">
+         <widget class="QRadioButton" name="radioButton_j_only">
+          <property name="text">
+           <string>j_only </string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="7">
+         <widget class="QCheckBox" name="checkBox_PV_abs">
+          <property name="text">
+           <string>PV_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="8">
+         <widget class="QCheckBox" name="checkBox_PM2_abs">
+          <property name="text">
+           <string>σ_PM2_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="7">
+         <widget class="QRadioButton" name="radioButton_ends_only">
+          <property name="text">
+           <string>ends_only </string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="9">
+         <widget class="QCheckBox" name="checkBox_PM3_abs">
+          <property name="text">
+           <string>σ_PM3_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="3">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Stations:</string>
           </property>
          </widget>
         </item>
@@ -153,40 +182,10 @@
           </property>
          </widget>
         </item>
-        <item row="4" column="1">
-         <widget class="QPushButton" name="pushButton_zoomOut">
-          <property name="maximumSize">
-           <size>
-            <width>75</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>-</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="9">
-         <widget class="QCheckBox" name="checkBox_M2_abs">
-          <property name="text">
-           <string>M2_abs</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
         <item row="0" column="5">
          <widget class="QCheckBox" name="checkBox_P_abs">
           <property name="text">
            <string>P_abs</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="10">
-         <widget class="QCheckBox" name="checkBox_PM_abs">
-          <property name="text">
-           <string>σ_PM_abs</string>
           </property>
          </widget>
         </item>
@@ -200,7 +199,17 @@
           </property>
          </widget>
         </item>
-        <item row="3" column="0" colspan="20">
+        <item row="2" column="4">
+         <widget class="QRadioButton" name="radioButton_all_stations">
+          <property name="text">
+           <string>all</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0" colspan="20">
          <widget class="QPlainTextEdit" name="plainTextEdit">
           <property name="font">
            <font>
@@ -213,24 +222,43 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="9">
-         <widget class="QCheckBox" name="checkBox_PM3_abs">
+        <item row="0" column="18">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="5" column="0">
+         <widget class="QPushButton" name="pushButton_zoomIn">
+          <property name="maximumSize">
+           <size>
+            <width>75</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="text">
-           <string>σ_PM3_abs</string>
+           <string>+</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="4">
-         <widget class="QCheckBox" name="checkBox_Mtot_abs">
+        <item row="1" column="5">
+         <widget class="QCheckBox" name="checkBox_PV2_abs">
           <property name="text">
-           <string>Mtot_abs</string>
+           <string>PV2_abs</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="11">
-         <widget class="QCheckBox" name="checkBox_M3_min">
+        <item row="3" column="3">
+         <widget class="QLabel" name="label_3">
           <property name="text">
-           <string>M3_min</string>
+           <string>Options:</string>
           </property>
          </widget>
         </item>
@@ -244,16 +272,17 @@
           </property>
          </widget>
         </item>
-        <item row="4" column="0">
-         <widget class="QPushButton" name="pushButton_zoomIn">
-          <property name="maximumSize">
-           <size>
-            <width>75</width>
-            <height>16777215</height>
-           </size>
-          </property>
+        <item row="2" column="5">
+         <widget class="QRadioButton" name="radioButton_i_only">
           <property name="text">
-           <string>+</string>
+           <string>i_only </string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="10">
+         <widget class="QCheckBox" name="checkBox_PM_abs">
+          <property name="text">
+           <string>σ_PM_abs</string>
           </property>
          </widget>
         </item>
@@ -283,10 +312,27 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="7">
-         <widget class="QCheckBox" name="checkBox_PV_abs">
+        <item row="0" column="11">
+         <widget class="QCheckBox" name="checkBox_M3_min">
           <property name="text">
-           <string>PV_abs</string>
+           <string>M3_min</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QCheckBox" name="checkBox_Vtot_abs">
+          <property name="text">
+           <string>Vtot_abs</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="9">
+         <widget class="QCheckBox" name="checkBox_M2_abs">
+          <property name="text">
+           <string>M2_abs</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -310,37 +356,6 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="6">
-         <widget class="QCheckBox" name="checkBox_V2_abs">
-          <property name="text">
-           <string>V2_abs</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="8">
-         <widget class="QCheckBox" name="checkBox_PM2_abs">
-          <property name="text">
-           <string>σ_PM2_abs</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0" rowspan="3">
-         <widget class="QPushButton" name="pushButton_GetResults">
-          <property name="text">
-           <string>Get results</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="5">
-         <widget class="QCheckBox" name="checkBox_PV2_abs">
-          <property name="text">
-           <string>PV2_abs</string>
-          </property>
-         </widget>
-        </item>
         <item row="0" column="12">
          <widget class="QCheckBox" name="checkBox_M3_abs">
           <property name="text">
@@ -351,48 +366,47 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="11">
-         <widget class="QCheckBox" name="checkBox_reduce_LC_name">
+        <item row="1" column="4">
+         <widget class="QCheckBox" name="checkBox_Mtot_abs">
           <property name="text">
-           <string>reduce LC name</string>
+           <string>Mtot_abs</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="7">
-         <widget class="QRadioButton" name="radioButton_ends_only">
+        <item row="5" column="1">
+         <widget class="QPushButton" name="pushButton_zoomOut">
+          <property name="maximumSize">
+           <size>
+            <width>75</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="text">
-           <string>ends_only </string>
+           <string>-</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="6">
-         <widget class="QRadioButton" name="radioButton_j_only">
+        <item row="0" column="6">
+         <widget class="QCheckBox" name="checkBox_V2_abs">
           <property name="text">
-           <string>j_only </string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="5">
-         <widget class="QRadioButton" name="radioButton_i_only">
-          <property name="text">
-           <string>i_only </string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="4">
-         <widget class="QRadioButton" name="radioButton_all_stations">
-          <property name="text">
-           <string>all</string>
+           <string>V2_abs</string>
           </property>
           <property name="checked">
            <bool>true</bool>
           </property>
          </widget>
         </item>
-        <item row="2" column="3">
-         <widget class="QLabel" name="label_2">
+        <item row="3" column="6" colspan="2">
+         <widget class="QCheckBox" name="checkBox_reduce_LC_name">
           <property name="text">
-           <string>Stations:</string>
+           <string>reduce LC name</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="4" colspan="2">
+         <widget class="QCheckBox" name="checkBox_mlist">
+          <property name="text">
+           <string>show member list</string>
           </property>
          </widget>
         </item>
